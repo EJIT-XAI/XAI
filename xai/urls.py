@@ -22,5 +22,6 @@ from accounts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.st_login)
+    path('project/',include('projects.urls')),
+    path('', views.st_login),
 ] 

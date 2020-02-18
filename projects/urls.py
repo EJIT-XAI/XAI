@@ -2,14 +2,14 @@ from django.urls import path
 from projects import views
 
 
-
+app_name='projects'
 
 urlpatterns = [
-    path('', views.statuspage),
-    path('dataload/', views.dataload),
-    path('edapage/', views.edapage),
-    path('automl/', views.automl),
-    path('modelcreate/', views.modelcreate),
-    path('xai/', views.xai),
+    path('', views.statuspage, name='status'),
+    path('loaddata/', views.loaddata, name='loaddata'),
+    path('edapage/', views.edapage, name='edapage'),
+    path('automl/', views.automl,name='automl'),
+    path('modelcreate/', views.modelcreate,name='modelcreate'),
+    path('xai/', views.xai,name='xai'),
 ] 
 

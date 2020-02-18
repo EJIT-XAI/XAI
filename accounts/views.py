@@ -20,7 +20,7 @@ def st_login(request):
         if user is not None:
             #로그인 확인 및 서비스 이동
             login(request, user)
-            return render(request,"base.html")
+            return redirect('projects:status')
         else:
             #로그인 실패 로그인 화면
             pass

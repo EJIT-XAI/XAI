@@ -1,0 +1,29 @@
+{% extends 'login_base.html' %}
+{% load static %}
+{% block content %}
+<form class="form-login" action="" method="post">
+    {% csrf_token %}
+    <h2 class="form-login-heading">sign in now</h2>
+    <div class="login-wrap">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      <br>
+      {{ form.password.label_tag }}
+        {{ form.password }}
+
+    <span class="pull-right">
+    <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
+    </span>
+        
+      <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+      <hr>
+      <div class="registration">
+        Don't have an account yet?<br/>
+        <a class="" href="#">
+          Create an account
+          </a>
+      </div>
+    </div>
+  </form>
+
+{% endblock %}

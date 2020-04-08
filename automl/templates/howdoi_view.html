@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <section class="wrapper">
+        <div class="border-head">
+            <h3>XAI-QnA</h3>
+        </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="query">
+        <input type="submit" value="문의">
+    </form>
+    <br>
+
+    
+    {{output|linebreaks}}
+
+</section>
+
+
+{% endblock %}

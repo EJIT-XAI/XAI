@@ -1,27 +1,46 @@
-from django.contrib.auth import authenticate, login
-from .models import User
 from django.shortcuts import render, redirect
+from django.http import HttpResponse,HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth import login, authenticate, logout
 
-# Create your views here.
+from .forms import SignupForm, LoginForm
+ 
+ 
+def signup(request):
+    if request.user.is_authenticated:
+        logout(request)
+    signupform = SignupForm()
+    if request.method == "POST":
+        signupform = SignupForm(request.POST, request.FILES)
+        if signupform.is_valid():
+            user = signupform.save(commit=False)
+            user.email = signupform.cleaned_data['email']
+            user.save()
+ 
+            return redirect(reverse('accounts:signin'))
+ 
+    return render(request, "signup.html", {
+        "signupform": signupform,
+    })
 
-def st_login(request):
-    if request.method == 'GET':
-        if request.user.is_authenticated:
-            return render(request,"base.html")
-        else:
-            pass
-        # 로그인 화면 보여주기
-        pass
-    elif request.method == 'POST':
-        # 로그인 로직    
+def signin(request):
+    if request.user.is_authenticated:
+        return redirect(reverse('automl:dashboard'))
+    if request.method == "POST":
+        form = LoginForm(request.POST)
         email = request.POST['email']
         password = request.POST['password']
-        user = authenticate(request, email=email, password=password)
+        user = authenticate(email = email, password = password)
         if user is not None:
-            #로그인 확인 및 서비스 이동
-            login(request, user)
-            return redirect('projects:status')
+            login(request,user)
+            return redirect(reverse('automl:dashboard'))
         else:
-            #로그인 실패 로그인 화면
-            pass
-    return render(request,'home.html')
+            return redirect(reverse('accounts:signin'))
+    else:
+        form = LoginForm()
+        return render(request,'login.html',{'form':form})
+
+def logout_view(request):
+    logout(request)
+    return redirect(reverse('accounts:signin'))
+

@@ -1,0 +1,59 @@
+{% load static %}
+<!--sidebar start-->
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+      <!-- sidebar menu start-->
+      <ul class="sidebar-menu" id="nav-accordion">
+        <p class="centered"><a href="{% url 'automl:dashboard' %}"><img src="{% static 'img/ui-sam.jpg' %}" class="img-circle" width="80"></a></p>
+        <h5 class="centered">{{user.nickname}}</h5>
+        <li class="mt">
+          <a href="{% url 'automl:dashboard' %}">
+            <i class="fa fa-dashboard"></i>
+            <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="sub-menu">
+          <a href="javascript:;">
+            <i class="fa fa-cogs"></i>
+            <span>Components</span>
+            </a>
+          <ul class="sub">
+            <li><a href="{% url 'automl:upload'%}">Fild upload</a></li>
+          </ul>
+        </li>
+        <li class="sub-menu">
+          <a href="{% url 'automl:chart' %}">
+            
+            <i class=" fa fa-bar-chart-o"></i>
+            <span>Charts</span>
+            </a>
+        </li>
+        <li class="sub-menu">
+          <a href="{% url 'automl:table' %}">
+            <i class="fa fa-th"></i>
+            <span>Data Tables</span>
+            </a>
+        </li>
+        <li class="sub-menu">
+          <a href="javascript:;">
+            <i class="fa fa-desktop"></i>
+            <span>Reports</span>
+            </a>
+          <ul class="sub">
+            <li><a href="morris.html">Morris</a></li>
+            <li><a href="chartjs.html">Chartjs</a></li>
+            <li><a href="flot_chart.html">Flot Charts</a></li>
+            <li><a href="xchart.html">xChart</a></li>
+          </ul>
+        </li>
+        <li class="sub-menu">
+          <a href="{% url 'automl:howdoi' %}">
+            <i class="fa fa-comments-o"></i>
+            <span>XAI-QnA</span>
+            </a>
+        </li>
+      </ul>
+      <!-- sidebar menu end-->
+    </div>
+  </aside>
+  <!--sidebar end-->

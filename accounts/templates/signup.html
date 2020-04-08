@@ -1,0 +1,60 @@
+{% extends 'login_base.html' %}
+{% load static %}
+{% block content %}
+<form class="form-login" action="" method="post">
+    {% csrf_token %}
+    <h2 class="form-login-heading">sign in now</h2>
+
+    <div class="login-wrap">
+        <div class="form-group">
+            <label>{{ signupform.username.label_tag }}</label>
+            {{ signupform.username }}
+            <span class="field-error">
+                {{ signupform.username.errors|striptags }}
+            </span>
+        </div>
+        
+        <div class="form-group">
+            <label>{{ signupform.email.label_tag }}</label>
+            {{ signupform.email }}
+            <span class="field-error">
+                {{ signupform.email.errors|striptags }}
+            </span>
+        </div>
+        
+        
+        {{ signupform.nickname.label_tag }}
+        {{ signupform.nickname }}
+        {{ signupform.nickname.errors|striptags }}
+        
+        <div class="form-group">
+            <label>{{ signupform.password1.label_tag }}</label>
+            {{ signupform.password1 }}
+            <span class="field-error">
+                {{ signupform.password1.errors|striptags }}
+            </span>
+        </div>
+        <div class="form-group">
+            <label>{{ signupform.password2.label_tag }}</label>
+            {{ signupform.password2 }}
+            <span class="field-error">
+                {{ signupform.password2.errors|striptags }}
+            </span>
+        </div>
+    
+    
+
+        
+      <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN UP</button>
+      <hr>
+      <div class="registration">
+        Don't have an account yet?<br/>
+        <a class="" href="#">
+          Create an account
+          </a>
+      </div>
+    </div>
+
+</form>
+
+{% endblock %}

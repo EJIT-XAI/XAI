@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="main-content">
+  <section class="wrapper">
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+  </section>
+</section>
+{% endblock %}
